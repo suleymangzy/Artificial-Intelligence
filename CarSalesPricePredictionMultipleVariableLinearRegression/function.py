@@ -16,14 +16,15 @@ def costFunction(x, y, w, b, linearFunction):
 
 def gradientFunction(x, y, w, b, linearFunction):
     m,n = x.shape
-    dj_dw = np.zeros((n))
+    dj_dw = np.zeros((n,))
     dj_db = 0.
     for i in range(m):
         err = linearFunction(x[i], w, b) - y[i]
-        err /= m
         for j in range(n):
-            dj_dw += err * x[i][j]
+            dj_dw[j] += err * x[i][j]
         dj_db += err
+    dj_dw /= m
+    dj_db /= m
     return dj_dw, dj_db
 
 def run(x, y, w, b, linearFunction, costFunction, gradientFunction, alpha, iterations):
