@@ -8,9 +8,7 @@ def linearFunction(x, w, b):
 
 def costFunction(x, y, w, b, linear_function):
     m = x.shape[0]
-    f = linear_function(x, w, b)
-    error = f - y
-    return (1 / (2 * m)) * np.sum(np.square(error))
+    return (1 / (2 * m)) * np.sum(np.square(linear_function(x, w, b) - y))
 
 def gradientFunction(x, y, w, b, linear_function):
     m = x.shape[0]
@@ -32,7 +30,7 @@ def run(x, y, w, b, linear_function, cost_function, gradient_function, alpha, it
         hist_J.append(cost)
 
         if i % math.ceil(iterations/10) == 0:
-            print(f"Iteration: {i}, Cost: {cost}")
+            print(f"Iteration: {i}, Cost: {cost:.4f}")
 
     print(f"Weight: {w_final}, Bias: {b_final}")
     m = x.shape[0]
