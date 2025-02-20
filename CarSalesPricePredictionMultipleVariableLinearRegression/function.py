@@ -40,7 +40,7 @@ def run(x, y, w, b, linearFunction, costFunction, gradientFunction, alpha, itera
         hist_J.append(costFunction(x, y, w_final, b_final, linearFunction))
 
         if i % math.ceil(iterations/10) == 0:
-            print(f"Iteration: {i}, Cost: {hist_J[-1]:.4f}")
+            print(f"Iteration: {i}, Cost: {float(hist_J[-1]):.4f}")
 
     print(f"Final Weights: {w_final}")
     print(f"Final Bias: {b_final}")
